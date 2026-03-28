@@ -172,6 +172,25 @@
                 <p id="score-summary" style="font-size: 0.8rem; opacity: 0.6;"></p>
             </div>
 
+            <div id="already-claimed-view" class="hidden">
+            <div class="icon-box-circle" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);">
+                <i data-lucide="check-circle-2" style="color: var(--primary-lime);"></i>
+            </div>
+                <h2 class="lao-text" style="font-size: 1.8rem; margin: 0;">ທ່ານໄດ້ຮັບລາງວັນແລ້ວ</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 30px; opacity: 0.8;">You have already claimed your reward.</p>
+    
+            <div style="background: rgba(190, 255, 85, 0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(190, 255, 85, 0.2);">
+                <p class="lao-text" style="font-size: 0.9rem; margin: 0 0 15px 0;">ຕິດຕາມກິດຈະກຳ ແລະ ໂປຣໂມຊັ່ນໃໝ່ໆໄດ້ທີ່ເພຈ</p>
+        
+                <a href="https://https://www.facebook.com/profile.php?id=61556746001180" target="_blank" style="text-decoration: none;">
+                    <button class="btn-main" style="width: 100%; font-size: 0.9rem; padding: 12px 20px; background: #1877F2; color: white;">
+                    <i data-lucide="facebook" size="18"></i>
+                    <span style="font-weight: bold;">XPENG LAOS</span>
+            </button>
+        </a>
+    </div>
+</div>
+
             <div style="text-align:left; margin-top:25px;">
                 <div style="font-size:0.65rem; font-weight:bold; text-transform:uppercase; margin-bottom:12px; opacity:0.5; letter-spacing:1px;">Question Breakdown</div>
                 <div id="breakdown-list"></div>
@@ -186,15 +205,27 @@
 
 <script>
     window.onload = () => {
-    lucide.createIcons(); // Initialize your icons
+    lucide.createIcons();
     
-    // If the "won" flag exists in the browser, jump to results
     if (localStorage.getItem('xpeng_quiz_won') === 'true') {
+        // Hide Home and Quiz completely
         document.getElementById('home-step').classList.add('hidden');
+        document.getElementById('quiz-step').classList.add('hidden');
         document.getElementById('progress-container').classList.add('hidden');
-        showResults(true); // Call results with a "skip animation" flag
+        
+        // Show the Result Area and the specific "Already Claimed" view
+        document.getElementById('score-area').classList.remove('hidden');
+        document.getElementById('already-claimed-view').classList.remove('hidden');
+        
+        // Hide the other views and the Play Again button
+        document.getElementById('perfect-view').classList.add('hidden');
+        document.getElementById('normal-view').classList.add('hidden');
+        document.getElementById('restart-btn').classList.add('hidden');
+        document.getElementById('result-icon-container').classList.add('hidden'); // Hide the top icon circle
+        
+        lucide.createIcons();
     }
-    };
+};
     const quizData = [
         { qLao: "ລົດຄັນນີ້ມີຊື່ລຸ້ນວ່າຫຍັງ?", qEn: "What is the name of this car?", a: ["XPENG MONA M03", "XPENG G9", "XPENG G6", "XPENG P7"], correct: 0 },
         { qLao: "ລົດຄັນນີ້ລາຄາເທົ່າໃດ?", qEn: "How much is this car?", a: ["27.500 $", "29.800 $", "30.300 $", "39.800 $"], correct: 1 },
@@ -272,47 +303,59 @@
         }, 300);
     }
 
-    function showResults(isAlreadyWon = false) {
+    function showResults(skipAnim = false) {
     const quiz = document.getElementById("quiz-step");
-    quiz.classList.add("animate-out");
+    
+    // 1. Handle the "Exit" animation of the quiz card
+    if (!skipAnim) {
+        quiz.classList.add("animate-out");
+    }
 
     const displayAction = () => {
+        // Hide quiz and progress bar
         quiz.classList.add("hidden");
         document.getElementById("progress-container").classList.add("hidden");
-        
+
+        // Show the result area with an "In" animation
         const scoreArea = document.getElementById("score-area");
         scoreArea.classList.remove("hidden", "animate-out");
-        scoreArea.classList.add("animate-in");
-        
-        // Check if they just got 5/5 OR if they already had a saved win
-        const isPerfect = (score === quizData.length) || isAlreadyWon;
+        if (!skipAnim) scoreArea.classList.add("animate-in");
+
+        // Determine if they won or if they already have a saved win
+        const isPerfect = (score === quizData.length) || localStorage.getItem('xpeng_quiz_won') === 'true';
         const iconEl = document.getElementById("main-icon");
-        
+
         if (isPerfect) {
-            // SAVE THE WIN TO BROWSER MEMORY
+            // LOCK THE WIN: Save to browser memory
             localStorage.setItem('xpeng_quiz_won', 'true'); 
-            
+
+            // Show Perfect View, Hide others
             document.getElementById("perfect-view").classList.remove("hidden");
             document.getElementById("normal-view").classList.add("hidden");
+            document.getElementById("already-claimed-view").classList.add("hidden");
             document.getElementById("restart-btn").classList.add("hidden"); // Hide Play Again
+            
             iconEl.setAttribute('data-lucide', 'trophy');
         } else {
-            // Let them try again
+            // NOT PERFECT: Let them try again
             document.getElementById("normal-view").classList.remove("hidden");
             document.getElementById("perfect-view").classList.add("hidden");
+            document.getElementById("already-claimed-view").classList.add("hidden");
             document.getElementById("restart-btn").classList.remove("hidden"); // Show Play Again
+            
             document.getElementById("score-summary").innerText = `Total Score: ${score} / ${quizData.length}`;
             iconEl.setAttribute('data-lucide', 'zap');
         }
-        
-        lucide.createIcons(); // Refresh icons to show Trophy/Zap
 
-        // Build the breakdown list
+        // Refresh icons so the Trophy or Zap shows up
+        lucide.createIcons();
+
+        // Render the breakdown list (Question 1: Correct, etc.)
         const list = document.getElementById("breakdown-list");
         list.innerHTML = "";
         
-        // Only show breakdown if they just finished (not if returning to a saved win)
-        if (!isAlreadyWon) {
+        // Only animate the breakdown if they JUST finished the quiz
+        if (!skipAnim) {
             userHistory.forEach((correct, i) => {
                 const div = document.createElement("div");
                 div.className = `breakdown-item ${correct ? 'item-correct' : 'item-incorrect'}`;
@@ -323,8 +366,12 @@
         }
     };
 
-    // If they already won, don't make them wait for the 500ms fade
-    if (isAlreadyWon) displayAction(); else setTimeout(displayAction, 500);
+    // If skipping animation (page refresh), show instantly. Otherwise, wait for fade.
+    if (skipAnim) {
+        displayAction();
+    } else {
+        setTimeout(displayAction, 500);
+    }
 }
 
     function resetQuiz() {
