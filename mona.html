@@ -37,27 +37,10 @@
             0% { opacity: 0; transform: translateY(40px) scale(0.9); filter: blur(10px); }
             100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
-
-        @keyframes slideInRight {
-            0% { opacity: 0; transform: translateX(30px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideOutLeft {
-            0% { opacity: 1; transform: translateX(0); }
-            100% { opacity: 0; transform: translateX(-30px); }
-        }
-
-        @keyframes fadeOutUp {
-            from { opacity: 1; transform: scale(1); }
-            to { opacity: 0; transform: scale(0.9) translateY(-30px); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: scale(0.9) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
+        @keyframes slideInRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
+        @keyframes slideOutLeft { 0% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; transform: translateX(-30px); } }
+        @keyframes fadeOutUp { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9) translateY(-30px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: scale(0.9) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
         @keyframes buttonPulse {
             0% { box-shadow: 0 0 0 0 rgba(190, 255, 85, 0.4); }
             70% { box-shadow: 0 0 0 15px rgba(190, 255, 85, 0); }
@@ -68,7 +51,6 @@
         .animate-out { animation: fadeOutUp 0.5s forwards ease-in; }
         .animate-in { animation: fadeInUp 0.6s forwards cubic-bezier(0.22, 1, 0.36, 1); }
         .pulse-btn { animation: buttonPulse 2s infinite; }
-        
         .q-slide-out { animation: slideOutLeft 0.3s forwards ease-in; }
         .q-slide-in { animation: slideInRight 0.4s forwards ease-out; }
 
@@ -86,7 +68,6 @@
         }
 
         .question-lao { font-size: 1.5rem; color: var(--primary-lime); margin-bottom: 8px; font-weight: 700; text-align: left; }
-        
         .option {
             display: flex; justify-content: space-between; align-items: center;
             width: 100%; padding: 16px 20px; margin: 12px 0;
@@ -94,7 +75,6 @@
             border-radius: 15px; color: white; cursor: pointer; transition: all 0.2s; box-sizing: border-box;
         }
         .option.selected { border-color: var(--primary-lime); background: rgba(190, 255, 85, 0.15); transform: translateX(5px); }
-        
         .radio-circle { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4); border-radius: 50%; }
         .selected .radio-circle { border-color: var(--primary-lime); background: radial-gradient(var(--primary-lime) 40%, transparent 50%); }
 
@@ -104,28 +84,16 @@
             display: inline-flex; align-items: center; gap: 10px; justify-content: center;
         }
 
-        .breakdown-item { 
-            padding: 12px 15px; border-radius: 12px; margin-bottom: 8px; 
-            display: flex; align-items: center; gap: 12px; text-align: left; 
-            font-size: 0.85rem; opacity: 0; 
-        }
+        .breakdown-item { padding: 12px 15px; border-radius: 12px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; text-align: left; font-size: 0.85rem; opacity: 0; }
         .item-correct { background: var(--correct-bg); border: 1px solid rgba(22, 163, 74, 0.3); }
         .item-incorrect { background: var(--wrong-bg); border: 1px solid rgba(239, 68, 68, 0.3); }
-
         .hidden { display: none !important; }
-        
-        /* Icon Box Styling */
-        .icon-box-circle {
-            width: 70px; height: 70px; background: var(--primary-lime); 
-            border-radius: 50%; display: flex; justify-content: center; 
-            align-items: center; margin: 0 auto 20px; color: #000;
-        }
+        .icon-box-circle { width: 70px; height: 70px; background: var(--primary-lime); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; color: #000; }
     </style>
 </head>
 <body>
 
     <div class="hero-container">
-        
         <div id="progress-container" class="progress-wrapper hidden">
             <div class="progress-bar-bg"><div id="progress-fill"></div></div>
         </div>
@@ -133,13 +101,10 @@
         <div id="home-step" style="text-align: center;">
             <div class="animate-title">
                 <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 15px; opacity: 0.8;">Limited Time Challenge</p>
-                <h1 style="font-size: clamp(3rem, 10vw, 4.5rem); line-height: 1; margin: 0;">Ready for a<br><span style="color: var(--primary-lime);">Free Drink?</span></h1>
-                <p class="lao-text" style="margin-top: 30px; font-size: 1.2rem;">ກິດຈະກຳຕອບຄຳຖາມລຸ້ນຮັບເຄື່ອງດື່ມຟຣີ 1 ຈອກ</p>
-                <p style="opacity: 0.8; font-size: 0.9rem;">Complete the challenge to win!</p>
+                <h1 style="font-size: clamp(3rem, 10vw, 4.5rem); line-height: 1; margin: 0;">Ready for a<br><span style="color: var(--primary-lime);">Free Beer?</span></h1>
+                <p class="lao-text" style="margin-top: 30px; font-size: 1.2rem;">ກິດຈະກຳຕອບຄຳຖາມລຸ້ນຮັບເບຍສົດຟຣີ 1 ຈອກ</p>
             </div>
-            <button class="btn-main pulse-btn" style="margin-top: 40px; padding: 18px 60px; font-size: 1.1rem;" onclick="animateToQuiz()">
-                Start the Challenge
-            </button>
+            <button class="btn-main pulse-btn" style="margin-top: 40px; padding: 18px 60px; font-size: 1.1rem;" onclick="animateToQuiz()">Start the Challenge</button>
         </div>
 
         <div id="quiz-step" class="quiz-card hidden">
@@ -149,8 +114,7 @@
                 <div id="options-container"></div>
             </div>
             <button id="confirm-btn" class="btn-main" style="margin-top: 20px; float: right;" onclick="confirmAnswer()" disabled>
-                <span>Confirm</span>
-                <i data-lucide="chevron-right" size="18"></i>
+                <span>Confirm</span> <i data-lucide="chevron-right" size="18"></i>
             </button>
         </div>
 
@@ -160,16 +124,31 @@
             </div>
             
             <div id="perfect-view" class="hidden">
-                <h2 class="lao-text" style="color: var(--primary-lime); font-size: 1.8rem; margin: 0;">ທ່ານໄດ້ຄະແນນເຕັມ</h2>
-                <p style="font-size: 0.9rem; margin-bottom: 15px;">You got a perfect score! ✨</p>
+                <h2 class="lao-text" style="color: var(--primary-lime); font-size: 1.8rem; margin: 0;">ທ່ານໄດ້ຄະແນນເຕັມ!</h2>
+                <h2 class="lao-text" style="color: var(--primary-lime); font-size: 1.8rem; margin: 0;">You get full score!</h2>
                 <p class="lao-text" style="font-weight: bold; margin-top: 20px; font-size: 1.2rem;">ຮັບລາງວັນທີ່ໜ້າເຄົາເຕີ້ບາ</p>
                 <p style="opacity: 0.8; font-size: 0.9rem;">Please claim your reward at the counter bar.</p>
             </div>
 
             <div id="normal-view" class="hidden">
                 <h2 class="lao-text" style="font-size: 1.5rem; margin: 0;">ຂອບໃຈທີ່ຮ່ວມກິດຈະກຳ</h2>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 10px;">Thank you for participating!</p>
-                <p id="score-summary" style="font-size: 0.8rem; opacity: 0.6;"></p>
+                <p id="score-summary" style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;"></p>
+            </div>
+
+            <div id="already-claimed-view" class="hidden">
+                <div class="icon-box-circle" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);">
+                    <i data-lucide="check-circle-2" style="color: var(--primary-lime);"></i>
+                </div>
+                <h2 class="lao-text" style="font-size: 1.8rem; margin: 0;">ທ່ານໄດ້ຮັບລາງວັນແລ້ວ</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 30px; opacity: 0.8;">You have already claimed your reward.</p>
+                <div style="background: rgba(190, 255, 85, 0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(190, 255, 85, 0.2);">
+                    <p class="lao-text" style="font-size: 0.9rem; margin: 0 0 15px 0;">ຕິດຕາມກິດຈະກຳໃໝ່ໆໄດ້ທີ່ເພຈ</p>
+                    <a href="https://www.facebook.com/profile.php?id=61556746001180" target="_blank" style="text-decoration: none;">
+                        <button class="btn-main" style="width: 100%; background: #1877F2; color: white;">
+                            <i data-lucide="facebook" size="18"></i> <span>XPENG LAOS</span>
+                        </button>
+                    </a>
+                </div>
             </div>
 
             <div style="text-align:left; margin-top:25px;">
@@ -178,13 +157,14 @@
             </div>
 
             <button id="restart-btn" class="btn-main" onclick="resetQuiz()" style="margin-top:30px; background:white; width: 100%;">
-                <i data-lucide="refresh-cw" size="18"></i>
-                <span>Play Again</span>
+                <i data-lucide="refresh-cw" size="18"></i> <span>Play Again</span>
             </button>
         </div>
     </div>
 
 <script>
+    // 1. CONFIGURATION
+    const LOCK_DURATION = 1 * 60 * 1000; // Change to 8 * 60 * 60 * 1000 for 8 hours
     const quizData = [
         { qLao: "ລົດຄັນນີ້ມີຊື່ລຸ້ນວ່າຫຍັງ?", qEn: "What is the name of this car?", a: ["XPENG MONA M03", "XPENG G9", "XPENG G6", "XPENG P7"], correct: 0 },
         { qLao: "ລົດຄັນນີ້ລາຄາເທົ່າໃດ?", qEn: "How much is this car?", a: ["27.500 $", "29.800 $", "30.300 $", "39.800 $"], correct: 1 },
@@ -195,14 +175,41 @@
 
     let currentIdx = 0, score = 0, selectedAnswer = null, userHistory = [];
 
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    // 2. ONLOAD CHECK
+    window.onload = () => {
+        lucide.createIcons();
+        const savedTime = localStorage.getItem('xpeng_quiz_won_time');
+        
+        if (savedTime) {
+            const now = new Date().getTime();
+            const timePassed = now - parseInt(savedTime);
 
+            if (timePassed < LOCK_DURATION) {
+                document.getElementById('home-step').classList.add('hidden');
+                document.getElementById('score-area').classList.remove('hidden');
+                document.getElementById('already-claimed-view').classList.remove('hidden');
+                document.getElementById('perfect-view').classList.add('hidden');
+                document.getElementById('normal-view').classList.add('hidden');
+                document.getElementById('restart-btn').classList.add('hidden');
+                document.getElementById('result-icon-container').classList.add('hidden');
+                
+                const remaining = LOCK_DURATION - timePassed;
+                const hoursLeft = Math.floor(remaining / (1000 * 60 * 60));
+                const minsLeft = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const secsLeft = Math.floor((remaining % (1000 * 60)) / 1000);
+                console.log(`Locked for another ${hoursLeft}h ${minsLeft}m ${secsLeft}s`);
+            } else {
+                localStorage.removeItem('xpeng_quiz_won_time');
+            }
+        }
+        lucide.createIcons();
+    };
+
+    // 3. QUIZ LOGIC
     function animateToQuiz() {
-        const home = document.getElementById("home-step");
-        home.classList.add("animate-out");
+        document.getElementById("home-step").classList.add("animate-out");
         setTimeout(() => {
-            home.classList.add("hidden");
+            document.getElementById("home-step").classList.add("hidden");
             document.getElementById("progress-container").classList.remove("hidden");
             const quiz = document.getElementById("quiz-step");
             quiz.classList.remove("hidden");
@@ -215,9 +222,8 @@
         selectedAnswer = null;
         const q = quizData[currentIdx];
         document.getElementById("progress-fill").style.width = (currentIdx / quizData.length * 100) + "%";
-        
         const wrapper = document.getElementById("q-content-wrapper");
-        wrapper.classList.remove("q-slide-out");
+        wrapper.classList.remove("q-slide-in");
         void wrapper.offsetWidth; 
         wrapper.classList.add("q-slide-in");
 
@@ -236,7 +242,6 @@
                 btn.classList.add("selected");
                 selectedAnswer = i;
                 document.getElementById("confirm-btn").disabled = false;
-                document.getElementById("confirm-btn").classList.add("pulse-btn");
             };
             container.appendChild(btn);
         });
@@ -246,15 +251,13 @@
         const isCorrect = (selectedAnswer === quizData[currentIdx].correct);
         if (isCorrect) score++;
         userHistory.push(isCorrect);
-        document.getElementById("confirm-btn").classList.remove("pulse-btn");
-        
         const wrapper = document.getElementById("q-content-wrapper");
-        wrapper.classList.remove("q-slide-in");
         wrapper.classList.add("q-slide-out");
 
         setTimeout(() => {
             currentIdx++;
             if (currentIdx < quizData.length) {
+                wrapper.classList.remove("q-slide-out");
                 loadQuestion();
             } else {
                 showResults();
@@ -263,20 +266,19 @@
     }
 
     function showResults() {
-        const quiz = document.getElementById("quiz-step");
-        quiz.classList.add("animate-out");
-
+        document.getElementById("quiz-step").classList.add("animate-out");
         setTimeout(() => {
-            quiz.classList.add("hidden");
+            document.getElementById("quiz-step").classList.add("hidden");
             document.getElementById("progress-container").classList.add("hidden");
             const scoreArea = document.getElementById("score-area");
-            scoreArea.classList.remove("hidden", "animate-out");
+            scoreArea.classList.remove("hidden");
             scoreArea.classList.add("animate-in");
             
             const isPerfect = (score === quizData.length);
             const iconEl = document.getElementById("main-icon");
-            
+
             if (isPerfect) {
+                localStorage.setItem('xpeng_quiz_won_time', new Date().getTime()); 
                 document.getElementById("perfect-view").classList.remove("hidden");
                 document.getElementById("restart-btn").classList.add("hidden");
                 iconEl.setAttribute('data-lucide', 'trophy');
@@ -285,7 +287,7 @@
                 document.getElementById("score-summary").innerText = `Total Score: ${score} / ${quizData.length}`;
                 iconEl.setAttribute('data-lucide', 'zap');
             }
-            lucide.createIcons(); // Refresh icons
+            lucide.createIcons();
 
             const list = document.getElementById("breakdown-list");
             list.innerHTML = "";
@@ -303,15 +305,10 @@
         currentIdx = 0; score = 0; selectedAnswer = null; userHistory = [];
         const scoreArea = document.getElementById("score-area");
         scoreArea.classList.add("animate-out");
-        
         setTimeout(() => {
-            scoreArea.classList.add("hidden");
-            scoreArea.classList.remove("animate-out", "animate-in");
-            
+            scoreArea.classList.add("hidden", "animate-out");
             document.getElementById("perfect-view").classList.add("hidden");
             document.getElementById("normal-view").classList.add("hidden");
-            document.getElementById("restart-btn").classList.remove("hidden");
-            
             document.getElementById("progress-container").classList.remove("hidden");
             const quiz = document.getElementById("quiz-step");
             quiz.classList.remove("hidden", "animate-out");
