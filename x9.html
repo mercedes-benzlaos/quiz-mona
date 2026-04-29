@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XPENG MONA M03 Challenge</title>
+    <title>XPENG X9 Challenge</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -27,7 +27,7 @@
         .hero-container {
             position: relative; width: 100%; height: 100vh;
             background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                        url('g9.jpg') no-repeat center center;
+                        url('x9.jpg') no-repeat center center;
             background-size: cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
@@ -166,11 +166,11 @@
     // 1. CONFIGURATION
     const LOCK_DURATION = 8 * 60 * 60 * 1000; // Change to 8 * 60 * 60 * 1000 for 8 hours
     const quizData = [
-        { qLao: "ລົດຄັນນີ້ມີຊື່ລຸ້ນວ່າຫຍັງ?", qEn: "What is the name of this car?", a: ["XPENG MONA M03", "XPENG G9", "XPENG G6", "XPENG P7"], correct: 1 },
-        { qLao: "ລົດຄັນນີ້ລາຄາເທົ່າໃດ?", qEn: "How much is this car?", a: ["27.500 $", "29.800 $", "30.300 $", "74.300 $"], correct: 3 },
-        { qLao: "ລົດຄັນນີ້ສາກເຕັມ ແລ່ນໄດ້ເທົ່າໃດ?", qEn: "How far can this car travel on a full charge?", a: ["435 km", "515 km", "520 km", "705 km"], correct: 2 },
-        { qLao: "ອັດຕາການເລັ່ງ 0-100km?", qEn: "Acceleration from 0-100km?", a: ["3.9s", "4.2s", "6.4s", "7.8s"], correct: 0 },
-        { qLao: "ລົດຄັນນີ້ມີແຮງມ້າເທົ່າໃດ?", qEn: "How many horse power dose this car have?", a: ["276", "551", "313", "188"], correct: 1 }
+        { qLao: "ລົດຄັນນີ້ມີຊື່ລຸ້ນວ່າຫຍັງ?", qEn: "What is the name of this car?", a: ["XPENG MONA M03", "XPENG G9", "XPENG X9", "XPENG P7"], correct: 2 },
+        { qLao: "ລົດຄັນນີ້ລາຄາເທົ່າໃດ?", qEn: "How much is this car?", a: ["27.500 $", "29.800 $", "30.300 $", "77.600 $"], correct: 3 },
+        { qLao: "ລົດຄັນນີ້ສາກເຕັມ ແລ່ນໄດ້ເທົ່າໃດ?", qEn: "How far can this car travel on a full charge?", a: ["435 km", "515 km", "520 km", "702 km"], correct: 3 },
+        { qLao: "ອັດຕາການເລັ່ງ 0-100km?", qEn: "Acceleration from 0-100km?", a: ["3.9s", "4.2s", "6.4s", "7.7s"], correct: 3 },
+        { qLao: "ລົດຄັນນີ້ມີແຮງມ້າເທົ່າໃດ?", qEn: "How many horse power dose this car have?", a: ["276", "551", "315", "188"], correct: 2 }
     ];
 
     let currentIdx = 0, score = 0, selectedAnswer = null, userHistory = [];
