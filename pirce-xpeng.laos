@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPENG Laos Price List Preview</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f4f6f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .img-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>XPENG Laos - Stock & Price List</h1>
+        <div class="img-wrapper">
+            <!-- Replace 'XPENG_LAOS.jpg' with your image file path -->
+            <img src="XPENG_LAOS.jpg" alt="XPENG Laos Stock and Price List">
+        </div>
+        <div class="actions">
+            <a href="XPENG_LAOS.jpg" target="_blank" class="btn">View Full Size</a>
+        </div>
+    </div>
+
+</body>
+</html>
